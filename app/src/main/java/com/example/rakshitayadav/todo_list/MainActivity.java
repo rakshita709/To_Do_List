@@ -15,17 +15,19 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<String> arrayList;
     ArrayAdapter<String> arrayAdapter;
+    String messageText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listView = ((ListView)findViewById(R.id.listView));
+        listView = (ListView) findViewById(R.id.listView);
         arrayList = new ArrayList<>();
-        arrayAdapter = new ArrayAdapter<>(this,android.R.id.l,arrayList);
+        arrayAdapter = new ArrayAdapter<>(this,R.layout.layout_for_todo,arrayList);
+        listView.setAdapter(arrayAdapter);
     }
 
-    public void AddData(View v)
+    public void onClick(View v)
     {
         Intent intent = new Intent();
         intent.setClass(MainActivity.this,Add_Data_To_Activity.class);

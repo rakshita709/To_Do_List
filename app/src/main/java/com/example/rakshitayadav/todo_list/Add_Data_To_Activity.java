@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 public class Add_Data_To_Activity extends AppCompatActivity {
@@ -14,7 +15,7 @@ public class Add_Data_To_Activity extends AppCompatActivity {
         setContentView(R.layout.todo_layout);
     }
 
-    public void save_data()
+    public void save_data(View v)
     {
         String DataText = ((EditText) findViewById(R.id.data_for_todo)).getText().toString();
         if(DataText.equals(""))
