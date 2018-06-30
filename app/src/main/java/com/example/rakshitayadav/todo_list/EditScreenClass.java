@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 public class EditScreenClass extends AppCompatActivity {
 
-    String new_text;
+    String new_text; //
     int pos;
 
     @Override
