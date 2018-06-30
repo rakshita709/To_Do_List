@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Add_Data_To_Activity"></activity>
+        <activity android:name=".Add_Data_To_Activity" />
+        <activity android:name=".EditScreenClass"></activity>
     </application>
 
 </manifest>
