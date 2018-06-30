@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             arrayList.add(messageText);
             arrayAdapter.notifyDataSetChanged();
         }
-        else if (resultCode == Intent_Constants.INTENT_REQUEST_CODE_NEW)
+        else if (resultCode == Intent_Constants.INTENT_RESULT_CODE_NEW)
         {
             messageText = data.getStringExtra(Intent_Constants.CHANGED_MESSAGE);
             position = data.getIntExtra(Intent_Constants.INTENT_ITEM_POSITION,-1);
