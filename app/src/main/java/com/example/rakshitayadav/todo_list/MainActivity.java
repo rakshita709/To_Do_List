@@ -1,15 +1,22 @@
 package com.example.rakshitayadav.todo_list;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.SparseBooleanArray;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,9 +28,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listView = (ListView) findViewById(R.id.listView);
+        listView = findViewById(R.id.listView);
         arrayList = new ArrayList<>();
         arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,arrayList);
         listView.setAdapter(arrayAdapter);
@@ -34,10 +42,49 @@ public class MainActivity extends AppCompatActivity {
                 intent.setClass(MainActivity.this,EditScreenClass.class);
                 intent.putExtra(Intent_Constants.INTENT_EDIT_DATA,arrayList.get(position));
                 intent.putExtra(Intent_Constants.INTENT_ITEM_POSITION,position);
+
                 startActivityForResult(intent,Intent_Constants.INTENT_REQUEST_CODE_NEW);
             }
         });
 
+        //deletion on long press
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                arrayList.remove(position);
+                arrayAdapter.notifyDataSetChanged();
+
+                return false;
+            }
+        });
+
+
+        try {
+            Scanner sc = new Scanner(openFileInput("todo.txt"));
+            while(sc.hasNextLine())
+            {
+                String data = sc.nextLine();
+                arrayAdapter.add(data);
+            }
+            sc.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public void onBackPressed() {
+        try {
+            PrintWriter pw = new PrintWriter(openFileOutput("todo.txt", Context.MODE_PRIVATE));
+            for(String data : arrayList)
+                pw.println(data);
+            pw.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        finish();
     }
 
     public void onClick(View v)
@@ -63,5 +110,12 @@ public class MainActivity extends AppCompatActivity {
             arrayAdapter.notifyDataSetChanged();
         }
 
+        //if we choose to delete from edit_screen_class
+        /*else if(resultCode == 3)
+        {
+            position = data.getIntExtra(Intent_Constants.INTENT_ITEM_POSITION,-1);
+            arrayList.remove(position);
+            arrayAdapter.notifyDataSetChanged();
+        }*/
     }
 }

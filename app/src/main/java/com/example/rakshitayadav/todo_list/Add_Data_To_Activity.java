@@ -1,11 +1,17 @@
 package com.example.rakshitayadav.todo_list;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.provider.ContactsContract;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Add_Data_To_Activity extends AppCompatActivity {
 
@@ -14,6 +20,8 @@ public class Add_Data_To_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.todo_layout);
     }
+
+
 
     public void save_data(View v)
     {
@@ -30,5 +38,8 @@ public class Add_Data_To_Activity extends AppCompatActivity {
             finish();
         }
     }
+
+
+
 
 }
