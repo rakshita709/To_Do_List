@@ -14,12 +14,12 @@ public class EditScreenClass extends AppCompatActivity {
     String new_text;
     int pos;
 
-   /* public boolean onCreateOptionsMenu(Menu menu) {
+   public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_editscreen, menu);
         return true;
-    }*/
+   }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,6 @@ public class EditScreenClass extends AppCompatActivity {
         finish();
     }
 
-/*
     public boolean onOptionsItemSelected(MenuItem item) {
 
         Intent intent = new Intent();
@@ -51,5 +50,5 @@ public class EditScreenClass extends AppCompatActivity {
         finish();
 
         return false;
-    }*/
+    }
 }

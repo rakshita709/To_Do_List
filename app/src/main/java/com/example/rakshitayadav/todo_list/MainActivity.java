@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //deletion on long press on main screen
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+       /* listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -57,8 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
                 return false;
             }
-        });
-
+        });*/
 
         try {
             Scanner sc = new Scanner(openFileInput("todo.txt"));
@@ -71,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public void onBackPressed() {
@@ -111,11 +108,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //if we choose to delete from edit_screen_class
-        /*else if(resultCode == 3)
+        else if(resultCode == 3)
         {
             position = data.getIntExtra(Intent_Constants.INTENT_ITEM_POSITION,-1);
             arrayList.remove(position);
             arrayAdapter.notifyDataSetChanged();
-        }*/
+        }
     }
 }
